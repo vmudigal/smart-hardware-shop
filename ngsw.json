@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1620962468198,
+  "index": "https://vmudigal.github.io/smart-hardware-shop/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://vmudigal.github.io/smart-hardware-shop/favicon.ico",
+        "https://vmudigal.github.io/smart-hardware-shop/index.html",
+        "https://vmudigal.github.io/smart-hardware-shop/main.ef207bfe5a5573b9896e.js",
+        "https://vmudigal.github.io/smart-hardware-shop/manifest.webmanifest",
+        "https://vmudigal.github.io/smart-hardware-shop/polyfills.00096ed7d93ed26ee6df.js",
+        "https://vmudigal.github.io/smart-hardware-shop/runtime.7b63b9fd40098a2e8207.js",
+        "https://vmudigal.github.io/smart-hardware-shop/styles.8f8e0d684b0c967db72b.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-128x128.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-144x144.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-152x152.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-192x192.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-384x384.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-512x512.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-72x72.png",
+        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://vmudigal.github.io/smart-hardware-shop/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://vmudigal.github.io/smart-hardware-shop/index.html": "d2c8972966e605726f8601a5560d9271aeb68a46",
+    "https://vmudigal.github.io/smart-hardware-shop/main.ef207bfe5a5573b9896e.js": "48529bdd32a1103f920061709e62ce5db011b6d8",
+    "https://vmudigal.github.io/smart-hardware-shop/manifest.webmanifest": "fa19096d8aaab1244fc6c23da077e07a9781fa73",
+    "https://vmudigal.github.io/smart-hardware-shop/polyfills.00096ed7d93ed26ee6df.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
+    "https://vmudigal.github.io/smart-hardware-shop/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://vmudigal.github.io/smart-hardware-shop/styles.8f8e0d684b0c967db72b.css": "d69c4d5471450d8a85ac848fc0b02dc9630921f1"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
