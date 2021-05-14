@@ -1,0 +1,58 @@
+<div style="padding-top: 20px; background-color: #fff;min-height: 100vh;">
+    <div class="container">
+        <div class="row">
+            <button mat-button routerLink="/product/recommendeds">
+                <h1 class="p-4 border rounded col-12" style="background: #3f51b5; color: white; text-align: center;">
+                    Recommendations!
+                    <h3>
+                        You would love what we have in our store specially for you!
+                    </h3>
+                </h1>
+            </button>
+
+            <div class="px-4 example-button-row d-flex justify-content-between">
+                <button *ngIf="isLoggedInUserAdmin()" mat-stroked-button color="warn" routerLink="/product/add">Add Product</button>
+                
+                <mat-form-field class="col-lg-3 col-md-4 col-sm-6 col-8">
+                    <input matInput type="search" (keyup)="doFilter($event.target)" placeholder="Search">
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <mat-spinner color="primary" style="min-height: 80vh; margin:0 auto;" *ngIf="resourcesLoaded === false">
+        </mat-spinner>
+        <div fxLayout="row wrap" fxLayoutGap="grid">
+            <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50%"
+                *ngFor="let data of products | slice:pageEvent.pageIndex * pageEvent.pageSize:pageEvent.pageIndex * pageEvent.pageSize + pageEvent.pageSize || 12; let i=index"
+                class="justify-content-center" fxLayout="row" fxFlexFill>
+
+                <mat-card class="product-card">
+                    <mat-card-header>
+                        <mat-card-title>{{data.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="{{data.defaultImage}}" alt="">
+                    <mat-card-content>
+                        <p>
+                            {{data.description}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions class="d-flex justify-content-between">
+                        <!-- <button mat-button color="primary" routerLink="/product/data.id">Detail</button> -->
+                        <button mat-button color="warn" *ngIf="isLoggedInUserAdmin()" routerLink="/product/{{data.id}}/edit">Edit</button>
+                        <button mat-button color="warn" *ngIf="isLoggedInUserAdmin()" (click)="deleteProduct(data)">Delete</button>
+                        <button mat-button color="primary" (click)="add(data)">+ Cart</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+
+        <h2 *ngIf="products == null || products.length == 0" class="vertical-center text-center">
+            We are really sorry but our robots could not find any products for yout search criteria!
+        </h2>
+
+        <mat-paginator *ngIf="!(products == null || products.length == 0)" class="m-2" [length]="length"
+            [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event;">
+        </mat-paginator>
+    </div>
+</div>

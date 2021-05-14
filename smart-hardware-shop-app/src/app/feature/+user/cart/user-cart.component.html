@@ -1,0 +1,51 @@
+<div class="container">
+    <h2 class="p-3 text-center">Shopping Cart</h2>
+    <div class="d-flex justify-content-center" *ngIf="userCart != null">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Item </th>
+                <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+                <td mat-footer-cell *matFooterCellDef> Total </td>
+            </ng-container>
+
+            <!-- Quantity Column -->
+            <ng-container matColumnDef="unit-price">
+                <th mat-header-cell *matHeaderCellDef> Unit Price </th>
+                <td mat-cell *matCellDef="let product"> {{product.price | currency}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- Quantity Column -->
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let product"> {{product.quantity}} </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let product"> {{getPrice(product) | currency}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell  *matHeaderCellDef > Action </th>
+                <td mat-cell *matCellDef="let product" >
+                     <button mat-button (click)="removeFromCart(product)">x</button>
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+            <button class="m-2" mat-raised-button routerLink='/'>Continue shopping</button>
+            <button class="m-2" mat-raised-button (click)="clearCart();">Clear cart</button>
+            <button class="m-2" mat-raised-button>Checkout</button>
+    </div>
+</div>

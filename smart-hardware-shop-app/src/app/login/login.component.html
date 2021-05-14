@@ -1,0 +1,28 @@
+<div class="col-md-12" style="min-height:80vh">
+    <div class="card card-container">
+        <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+        <form *ngIf="!isLoggedIn" name="form" novalidate>
+
+            <div class="form-group">
+                <div class="text-center p-3">Hey there! <br/>If you are a valid customer, please login here. </div>
+                <p class="content-divider center mt-3">
+                    <span></span>
+                </p>
+                    Login as:
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>User</mat-label>
+                        <input type="text" placeholder="Select user" aria-label="User" matInput [formControl]="myControl"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onSelectUser($event)" [displayWith]="displayFn">
+                            <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                                {{user.name.firstName}} {{user.name.lastName}} - {{user.role}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <button mat-button (click)="login()" [disabled]="selectedUser==null">Login</button>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
