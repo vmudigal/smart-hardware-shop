@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1621166772962,
-  "index": "https://vmudigal.github.io/smart-hardware-shop/index.html",
+  "timestamp": 1621186797079,
+  "index": "/smart-hardware-shop/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://vmudigal.github.io/smart-hardware-shop/favicon.ico",
-        "https://vmudigal.github.io/smart-hardware-shop/index.html",
-        "https://vmudigal.github.io/smart-hardware-shop/main.f75d0e6e235b62a15d1f.js",
-        "https://vmudigal.github.io/smart-hardware-shop/manifest.webmanifest",
-        "https://vmudigal.github.io/smart-hardware-shop/polyfills.42c9398b6105c65203a1.js",
-        "https://vmudigal.github.io/smart-hardware-shop/runtime.e4ad626db3c83504cec0.js",
-        "https://vmudigal.github.io/smart-hardware-shop/styles.b2313fc9d5fbe822f4ae.css"
+        "/smart-hardware-shop/favicon.ico",
+        "/smart-hardware-shop/index.html",
+        "/smart-hardware-shop/main.5c2c591733bc68d8bb46.js",
+        "/smart-hardware-shop/manifest.webmanifest",
+        "/smart-hardware-shop/polyfills.00191241c9053d46e6ce.js",
+        "/smart-hardware-shop/runtime.4b542e4c6475b6b9eda8.js",
+        "/smart-hardware-shop/styles.d253b7a4afe8a522d55c.css"
       ],
       "patterns": []
     },
@@ -29,47 +29,47 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-128x128.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-144x144.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-152x152.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-192x192.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-384x384.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-512x512.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-72x72.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-96x96.png",
-        "https://vmudigal.github.io/smart-hardware-shop/assets/img/bg.jpeg",
-        "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
-        "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.20fd1704ea223900efa9.woff2",
-        "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.8b43027f47b20503057d.eot",
-        "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
-        "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.f691f37e57f04c152e23.woff"
+        "/smart-hardware-shop/assets/icons/icon-128x128.png",
+        "/smart-hardware-shop/assets/icons/icon-144x144.png",
+        "/smart-hardware-shop/assets/icons/icon-152x152.png",
+        "/smart-hardware-shop/assets/icons/icon-192x192.png",
+        "/smart-hardware-shop/assets/icons/icon-384x384.png",
+        "/smart-hardware-shop/assets/icons/icon-512x512.png",
+        "/smart-hardware-shop/assets/icons/icon-72x72.png",
+        "/smart-hardware-shop/assets/icons/icon-96x96.png",
+        "/smart-hardware-shop/assets/img/bg.jpeg",
+        "/smart-hardware-shop/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+        "/smart-hardware-shop/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+        "/smart-hardware-shop/fontawesome-webfont.8b43027f47b20503057d.eot",
+        "/smart-hardware-shop/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+        "/smart-hardware-shop/fontawesome-webfont.f691f37e57f04c152e23.woff"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "https://vmudigal.github.io/smart-hardware-shop/assets/img/bg.jpeg": "0b74d023fb634007bc72d77d1587ac16cb4e8873",
-    "https://vmudigal.github.io/smart-hardware-shop/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
-    "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.20fd1704ea223900efa9.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
-    "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.8b43027f47b20503057d.eot": "d980c2ce873dc43af460d4d572d441304499f400",
-    "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
-    "https://vmudigal.github.io/smart-hardware-shop/fontawesome-webfont.f691f37e57f04c152e23.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "https://vmudigal.github.io/smart-hardware-shop/index.html": "0d9cd675c4410fa8289b7452454c8d43c0522044",
-    "https://vmudigal.github.io/smart-hardware-shop/main.f75d0e6e235b62a15d1f.js": "59ccbca51b8cda3723445aad450c901ac482aff2",
-    "https://vmudigal.github.io/smart-hardware-shop/manifest.webmanifest": "fa19096d8aaab1244fc6c23da077e07a9781fa73",
-    "https://vmudigal.github.io/smart-hardware-shop/polyfills.42c9398b6105c65203a1.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
-    "https://vmudigal.github.io/smart-hardware-shop/runtime.e4ad626db3c83504cec0.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://vmudigal.github.io/smart-hardware-shop/styles.b2313fc9d5fbe822f4ae.css": "04047e911f502ea236ce68749c70889715822bcb"
+    "/smart-hardware-shop/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/smart-hardware-shop/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/smart-hardware-shop/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/smart-hardware-shop/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/smart-hardware-shop/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/smart-hardware-shop/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/smart-hardware-shop/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/smart-hardware-shop/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/smart-hardware-shop/assets/img/bg.jpeg": "0b74d023fb634007bc72d77d1587ac16cb4e8873",
+    "/smart-hardware-shop/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/smart-hardware-shop/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+    "/smart-hardware-shop/fontawesome-webfont.20fd1704ea223900efa9.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+    "/smart-hardware-shop/fontawesome-webfont.8b43027f47b20503057d.eot": "d980c2ce873dc43af460d4d572d441304499f400",
+    "/smart-hardware-shop/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+    "/smart-hardware-shop/fontawesome-webfont.f691f37e57f04c152e23.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/smart-hardware-shop/index.html": "7fb7812e8ed1d9302a913989de3693708acf412c",
+    "/smart-hardware-shop/main.5c2c591733bc68d8bb46.js": "e20709cb2395b47772e8ba2800dd840851c18424",
+    "/smart-hardware-shop/manifest.webmanifest": "fa19096d8aaab1244fc6c23da077e07a9781fa73",
+    "/smart-hardware-shop/polyfills.00191241c9053d46e6ce.js": "77b3cd517d39d6c80218f32fa4457ba98f725006",
+    "/smart-hardware-shop/runtime.4b542e4c6475b6b9eda8.js": "db3467d2c35b2f15c3f8193cc9250f187286209e",
+    "/smart-hardware-shop/styles.d253b7a4afe8a522d55c.css": "58ed5c6f62e0d1e9953b6666558ef027a6d3ec99"
   },
   "navigationUrls": [
     {
