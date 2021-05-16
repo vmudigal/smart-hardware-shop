@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { map, subscribeOn } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { Cart, CartProduct } from '../../feature/+user/model/cart.model';
 import { modules } from 'src/config/module';
 import { environment } from 'src/environments/environment';
 import { ProductService } from '../product/product.service';
 import { Constants } from '../../shared/constants';
-import { Product } from 'src/app/feature/+product/model/product.model';
 import { User } from 'src/app/feature/+user/model/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private http: HttpClient, private productService: ProductService) { }
+  constructor(private http: HttpClient, private productService: ProductService, private router: Router) { }
 
   getUserCart(userId: number | null): Observable<Cart> {
     return this.http.get<Cart>(environment.baseUrl + modules.cart.detail
-      .replace('${user_id}', JSON.stringify(userId))).pipe(
+      .replace(Constants.USER_ROUTE_PARAM_USER_ID, JSON.stringify(userId))).pipe(
         map((userCart: Cart) => {
           return this.populateCartData(userCart);
         })
@@ -49,7 +49,7 @@ export class CartService {
           productToPush.quantity = 1;
           updatedCart.products.push(productToPush);
           added = true;
-          
+
           // Create the cart
           return this.createCart(updatedCart).pipe(map(() => {
             return cart;
@@ -104,6 +104,8 @@ export class CartService {
         product.name = productData.name;
         product.price = productData.price;
         product.discount = productData.discount;
+      }, err => {
+        this.router.navigate([Constants.NAVIGATE_ERROR, err.status], { queryParams: { code: err.status, message: err.statusText } });
       })
     });
     return cart;
@@ -124,15 +126,17 @@ export class CartService {
    */
   private updateCart(userId: number, cart: Cart): Observable<Cart> {
     return this.http.put<Cart>(environment.baseUrl + modules.cart.detail
-      .replace('${user_id}', JSON.stringify(userId)), cart
+      .replace(Constants.USER_ROUTE_PARAM_USER_ID, JSON.stringify(userId)), cart
     );
   }
 
   clearCart() {
     let user: User = JSON.parse(localStorage.getItem(Constants.LOGGED_IN_USER)!);
     this.http.delete<void>(environment.baseUrl + modules.cart.detail
-      .replace('${user_id}', JSON.stringify(user.id))).subscribe((status) => {
+      .replace(Constants.USER_ROUTE_PARAM_USER_ID, JSON.stringify(user.id))).subscribe((status) => {
         status;
+      }, err => {
+        this.router.navigate([Constants.NAVIGATE_ERROR, err.status], { queryParams: { code: err.status, message: err.statusText } });
       });
   }
 }

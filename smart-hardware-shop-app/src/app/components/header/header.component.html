@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-    <span>Smart Hardware Shop</span>
+<mat-toolbar style="background-color:#333; color:snow;">
+    <button mat-button routerLink="/">SMART HARDWARE SHOP</button>
     <span class="header-spacer"></span>
     <button (click)="drawer.toggle();" mat-icon-button class="menu-icon" aria-label="Icon button with menu icon">
         <mat-icon>menu</mat-icon>
@@ -14,7 +14,8 @@
                 <h3 class="text-center">{{loggedInUser!.name.firstName}} {{loggedInUser!.name!.lastName}}</h3>
                 <hr />
             </span>
-            <a mat-list-item *ngIf="loggedInUser != null" (click)="drawer.toggle();" routerLink='/user/cart'>Shopping Cart</a>
+            <a mat-list-item *ngIf="loggedInUser != null" (click)="drawer.toggle();" routerLink='/user/cart'>Shopping
+                Cart</a>
             <a mat-list-item *ngIf="loggedInUser != null" (click)="drawer.toggle();logout();">Logout</a>
             <a mat-list-item *ngIf="loggedInUser == null" (click)="drawer.toggle();" routerLink='/login'>Login</a>
         </mat-nav-list>

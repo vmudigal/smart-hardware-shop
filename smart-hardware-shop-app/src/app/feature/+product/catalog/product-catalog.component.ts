@@ -3,10 +3,11 @@ import { PageEvent } from '@angular/material/paginator';
 import { Product } from 'src/app/feature/+product/model/product.model';
 import { CartService } from 'src/app/service/cart/cart.service';
 import { ProductService } from 'src/app/service/product/product.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { User } from 'src/app/feature/+user/model/user.model';
 import { Constants } from 'src/app/shared/constants';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-catalog',
@@ -29,18 +30,24 @@ export class ProductCatalogComponent implements OnInit {
   pageEvent: PageEvent = new PageEvent();
 
   searchText = '';
-  loggedInUser!:User | null;
+  loggedInUser!: User | null;
 
   constructor(private productService: ProductService,
     private authService: AuthService,
     private cartService: CartService,
-    private _snackBar: MatSnackBar) {
-      this.authService.getLoggedInUser().subscribe((_loggedInUser) => {
-        this.loggedInUser = _loggedInUser;
-      })
+    private router: Router,
+    private spinner: NgxSpinnerService) {
+    this.authService.getLoggedInUser().subscribe((_loggedInUser) => {
+      this.loggedInUser = _loggedInUser;
+    }, err => {
+      this.router.navigate([Constants.NAVIGATE_ERROR, err.status],
+        { queryParams: { code: err.status, message: err.statusText } });
+    })
   }
 
   ngOnInit(): void {
+
+    this.spinner.show();
     this.recommendedProducts = false;
     this.productService.getAllProducts().subscribe((products) => {
       this.products = products;
@@ -52,63 +59,41 @@ export class ProductCatalogComponent implements OnInit {
       this.pageEvent.pageIndex = 0;
       this.pageEvent.pageSize = 12;
       this.resourcesLoaded = true;
+      this.spinner.hide();
+    }, err => {
+      this.spinner.hide();
+      this.router.navigate([Constants.NAVIGATE_ERROR, err.status],
+        { queryParams: { code: err.status, message: err.statusText } });
     });
   }
 
   public doFilter = (target: any) => {
     this.resourcesLoaded = false;
-    this.productService.searchProducts(target.value.trim().toLocaleLowerCase()).subscribe((searchedProducts) => {
-      this.products = searchedProducts;
-      //
-      this.pageEvent.length = this.products.length;
-      this.pageEvent.pageIndex = 0;
+    this.productService.searchProducts(target.value.trim()
+      .toLocaleLowerCase()).subscribe((searchedProducts) => {
+        this.products = searchedProducts;
+        //
+        this.pageEvent.length = this.products.length;
+        this.pageEvent.pageIndex = 0;
 
-      this.length = this.products.length;
-      this.resourcesLoaded = true;
-    })
+        this.length = this.products.length;
+        this.resourcesLoaded = true;
+      }, err => {
+        this.router.navigate([Constants.NAVIGATE_ERROR, err.status],
+          { queryParams: { code: err.status, message: err.statusText } });
+      })
   }
 
   add(product: Product) {
-    console.log('Add Product: ', product);
-    this.cartService.addToCart(product.id).subscribe((observable) => {
-      observable.subscribe((status) => {
-        if (status != null) {
-          this._snackBar.open(product.name, 'Added', {
-            duration: 3000
-          });
-        } else {
-          this._snackBar.open('Try again!', 'Error', {
-            duration: 3000
-          });
-        }
-      })
-    });
+    this.productService.add(product, this.cartService);
   }
 
-  getRecommendedProducts() {
-    this.recommendedProducts = true;
-    this.productService.getRecommendedProducts().subscribe((recommendedProducts) => {
-      this.products = recommendedProducts;
-    })
-  }
   isLoggedInUserAdmin() {
-  return this.loggedInUser != null && this.loggedInUser.role == Constants.ROLE_ADMIN;
+    return this.loggedInUser != null && this.loggedInUser.role == Constants.ROLE_ADMIN;
   }
 
-  deleteProduct(product:Product) {
-    let productName = product.name;
-    this.productService.deleteProduct(product.id).subscribe((deleted) => {
-      if(deleted) {
-        window.location.reload();
-        this._snackBar.open(productName, 'Deleted', {
-          duration: 3000
-        });
-      } else {
-        this._snackBar.open(productName, 'Error, Try again!', {
-          duration: 3000
-        });
-      }
-    });
+  delete(product: Product) {
+    this.productService.delete(product);
   }
 
 }

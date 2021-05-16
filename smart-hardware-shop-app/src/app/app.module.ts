@@ -16,20 +16,24 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RoleGuard } from './guard/role-guard.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductModule } from './feature/+product/product.module';
 import { UserModule } from './feature/+user/user.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ErrorHandlingComponent } from './error-handling/error-handling.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorHandlingComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ import { UserModule } from './feature/+user/user.module';
     MatListModule,
     MatButtonModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxSpinnerModule
   ],
   providers: [RoleGuard],
   bootstrap: [AppComponent]

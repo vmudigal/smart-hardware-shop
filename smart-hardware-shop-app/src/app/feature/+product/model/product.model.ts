@@ -4,8 +4,8 @@ export class Product {
   description: string;
   price: number;
   discount: number;
-  defaultImage: String;
-  images: String[];
+  defaultImage: string;
+  images: string[];
   quantity: number;
   constructor(product?: Product) {
     if (!product) {
@@ -19,13 +19,13 @@ export class Product {
       this.quantity = 0;
     } else {
       this.id = product.id;
-      this.name = product.name || '';
-      this.description = product.description || '';
-      this.price = product.price || 0;
-      this.discount = product!.discount || 0;
-      this.defaultImage = product!.defaultImage || '';
-      this.images = product!.images || [];
-      this.quantity = product?.quantity || 0;
+      this.name = product.name;
+      this.description = product.description;
+      this.price = product.price;
+      this.discount = product.discount;
+      this.defaultImage = product!.defaultImage;
+      this.images = product.images;
+      this.quantity = product.quantity;
     }
 
   }

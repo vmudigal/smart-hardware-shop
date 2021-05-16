@@ -1,17 +1,19 @@
+import { Constants } from "src/app/shared/constants";
+
 export const modules = {
     product: {
         list: 'products',
-        detail: 'products/${product_id}',
-        search: 'products?q=${keyword}',
-        paginatedList: 'products?_page=${page_number}&_limit=${number_of_entries}',
-        recommended: 'recommendeds'
+        detail: `products/${Constants.PRODUCT_ROUTE_PARAM_PRODUCT_ID}`,
+        search: `products?q=${Constants.PRODUCT_ROUTE_PARAM_KEYWORD}`,
+        paginatedList: `products?_page=${Constants.PRODUCT_QUERY_PARAM_PAGE_NUMBER}&_limit=${Constants.PRODUCT_QUERY_PARAM_NUMBER_OF_ENTRIES}`,
+        recommendeds: 'recommendeds'
     },
     users: {
         list: 'users',
-        detail: 'users/${user_id}'
+        detail: 'users/'
     },
     cart: {
         list: 'carts',
-        detail: 'carts/${user_id}'
+        detail: `carts/${Constants.USER_ROUTE_PARAM_USER_ID}`
     }
 };

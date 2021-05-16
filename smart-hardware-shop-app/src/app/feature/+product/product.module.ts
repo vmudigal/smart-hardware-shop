@@ -4,7 +4,6 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTableModule } from "@angular/material/table";
 import { RouterModule } from "@angular/router";
 import { ProductCatalogComponent } from "./catalog/product-catalog.component";
@@ -19,11 +18,15 @@ import { MatSortModule } from "@angular/material/sort";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ProductRoutingModule } from "./product-routing.module";
 import { ProductActionsComponent } from "./actions/product-actions.component";
+import { NgxGalleryModule } from "@kolkov/ngx-gallery";
+import { HttpClientModule } from "@angular/common/http";
+
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
+        HttpClientModule,
         ProductRoutingModule,
 
         // Material Module
@@ -37,10 +40,10 @@ import { ProductActionsComponent } from "./actions/product-actions.component";
         MatSortModule,
         MatCardModule,
         MatAutocompleteModule,
-        MatProgressSpinnerModule,
         MatTableModule,
         MatSnackBarModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxGalleryModule
     ],
     declarations: [
         ProductDetailComponent,

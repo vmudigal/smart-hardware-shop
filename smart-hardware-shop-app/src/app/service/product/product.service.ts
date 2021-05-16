@@ -5,6 +5,10 @@ import { map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { Product } from '../../feature/+product/model/product.model';
 import { modules } from 'src/config/module';
+import { CartService } from '../cart/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Constants } from 'src/app/shared/constants';
 
 /*
  * Product service interacts with 
@@ -17,7 +21,9 @@ import { modules } from 'src/config/module';
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   /*
    * Get all products
@@ -31,39 +37,39 @@ export class ProductService {
   /*
    * Get all products considering pagination
    */
-  getAllProductsByPagination(pageNumber:number, NoOfEntries:number): Observable<Product[]> {
+  getAllProductsByPagination(pageNumber: number, NoOfEntries: number): Observable<Product[]> {
     return this.http.get<Product[]>(environment.baseUrl + modules.product.paginatedList
-      .replace('${page_number}', JSON.stringify(pageNumber))
-      .replace('${number_of_entries}', JSON.stringify(NoOfEntries))).pipe(
-      map(products => products.map(product => new Product(product)))
-    );
+      .replace(Constants.PRODUCT_QUERY_PARAM_PAGE_NUMBER, JSON.stringify(pageNumber))
+      .replace(Constants.PRODUCT_QUERY_PARAM_NUMBER_OF_ENTRIES, JSON.stringify(NoOfEntries))).pipe(
+        map(products => products.map(product => new Product(product)))
+      );
   }
 
   /*
    * Search products based on keyword
    */
-  searchProducts(keyword:string):Observable<Product[]> {
+  searchProducts(keyword: string): Observable<Product[]> {
     return this.http.get<Product[]>(environment.baseUrl + modules.product.search
-      .replace('${keyword}', keyword)).pipe(
-      map(products => products.map(product => new Product(product)))
-    );
+      .replace(Constants.PRODUCT_ROUTE_PARAM_KEYWORD, keyword)).pipe(
+        map(products => products.map(product => new Product(product)))
+      );
   }
 
   /*
    * Get a product by product id
    */
-  getProductById(id:number): Observable<Product> {
+  getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(environment.baseUrl + modules.product.detail
-      .replace('${product_id}', JSON.stringify(id))).pipe(
-      map(product => new Product(product))
-    );
+      .replace(Constants.PRODUCT_ROUTE_PARAM_PRODUCT_ID, JSON.stringify(id))).pipe(
+        map(product => new Product(product))
+      );
   }
 
   /*
    * Get recommended products
    */
-  getRecommendedProducts():Observable<Product[]> {
-    return this.http.get<Product[]>(environment.baseUrl + modules.product.recommended).pipe(
+  getRecommendedProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.baseUrl + modules.product.recommendeds).pipe(
       map(products => products.map(product => new Product(product)))
     );
   }
@@ -81,9 +87,9 @@ export class ProductService {
   /*
    * Edit product
    */
-  editProduct(productId:number, product: Product): Observable<void> {
+  editProduct(productId: number, product: Product): Observable<void> {
     return this.http.put<void>(environment.baseUrl + modules.product.detail
-      .replace('${product_id}', JSON.stringify(productId)), product);
+      .replace(Constants.PRODUCT_ROUTE_PARAM_PRODUCT_ID, JSON.stringify(productId)), product);
   }
 
   /*
@@ -91,6 +97,46 @@ export class ProductService {
    */
   deleteProduct(productId: number): Observable<boolean> {
     return this.http.delete<boolean>(environment.baseUrl + modules.product.detail
-      .replace('${product_id}', JSON.stringify(productId)));
+      .replace(Constants.PRODUCT_ROUTE_PARAM_PRODUCT_ID, JSON.stringify(productId)));
+  }
+
+  // shared code
+
+  add(product: Product, cartService: CartService) {
+    cartService.addToCart(product.id).subscribe((observable) => {
+      observable.subscribe((status) => {
+        if (status != null) {
+          this._snackBar.open(product.name, Constants.CART_ACTION_ADD, {
+            duration: 3000
+          });
+        } else {
+          this._snackBar.open(product.name, Constants.PRODUCT_ACTION_ERROR, {
+            duration: 3000
+          });
+        }
+      }, err => {
+        this.router.navigate([Constants.NAVIGATE_ERROR, err.status], { queryParams: { code: err.status, message: err.statusText } });
+      })
+    }, err => {
+      this.router.navigate([Constants.NAVIGATE_ERROR, err.status], { queryParams: { code: err.status, message: err.statusText } });
+    });
+  }
+
+  delete(product: Product) {
+    let productName = product.name;
+    this.deleteProduct(product.id).subscribe((deleted) => {
+      if (deleted) {
+        window.location.reload();
+        this._snackBar.open(productName, Constants.PRODUCT_ACTION_DELETE, {
+          duration: 3000
+        });
+      } else {
+        this._snackBar.open(productName, Constants.PRODUCT_ACTION_ERROR, {
+          duration: 3000
+        });
+      }
+    }, err => {
+      this.router.navigate([Constants.NAVIGATE_ERROR, err.status], { queryParams: { code: err.status, message: err.statusText } });
+    });
   }
 }

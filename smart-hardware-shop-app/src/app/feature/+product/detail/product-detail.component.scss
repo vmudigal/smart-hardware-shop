@@ -1,0 +1,13 @@
+// Required for ngx-gallery
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+
+::ng-deep .ngx-gallery-preview-top {
+    margin-top: 75px!important;
+    padding: 0 20px;
+}
+
+::ng-deep .ngx-gallery-preview {
+    background: rgba(0,0,0,1)!important;
+}

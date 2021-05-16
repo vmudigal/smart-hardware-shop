@@ -44,14 +44,12 @@ export class AuthService {
 
   setLoggedInUser(user: User): void {
     this.loggedInUser.next(user);
-    localStorage.removeItem(Constants.USER_CART);
     localStorage.setItem(Constants.LOGGED_IN_USER, JSON.stringify(user));
   }
 
   clearLoggedInUser(): void {
     this.loggedInUser.next(null);
     localStorage.removeItem(Constants.LOGGED_IN_USER);
-    localStorage.removeItem(Constants.USER_CART);
   }
 
 }

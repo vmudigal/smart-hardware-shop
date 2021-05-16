@@ -1,6 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TestGlobalConstants } from 'src/app/app.component.spec';
 
 import { UserCartComponent } from './user-cart.component';
 
@@ -10,7 +12,8 @@ describe('UserCartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule, MatSnackBarModule],
+      imports: [HttpClientModule, MatSnackBarModule, 
+        RouterTestingModule.withRoutes(TestGlobalConstants.appTestRoutes)],
       declarations: [ UserCartComponent ]
     })
     .compileComponents();

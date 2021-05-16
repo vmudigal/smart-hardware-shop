@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/feature/+product/model/product.model';
 import { CartService } from 'src/app/service/cart/cart.service';
 import { ProductService } from 'src/app/service/product/product.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Constants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-product-recommended',
@@ -11,30 +13,30 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProductRecommendedComponent implements OnInit {
 
-  products!:Product[];
+  products!: Product[];
   resourcesLoaded = false;
 
-  constructor(private productService:ProductService,private cartService: CartService, private _snackBar: MatSnackBar) { }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private router: Router,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.productService.getRecommendedProducts().subscribe((recommendedProducts) => {
       this.products = recommendedProducts;
       this.resourcesLoaded = true;
+      this.spinner.hide();
+    }, err => {
+      this.spinner.hide();
+      this.router.navigate([Constants.NAVIGATE_ERROR, err.status],
+        { queryParams: { code: err.status, message: err.statusText } });
     })
   }
 
-  add(product: Product) {
-    console.log('Add Product: ', product);
-    let added = this.cartService.addToCart(product.id);
-    if (true) {
-      this._snackBar.open(product.name, 'Added', {
-        duration: 3000
-      });
-    } else {
-      this._snackBar.open('Try again!', 'Error', {
-        duration: 3000
-      });
-    }
+  add(data: Product) {
+    this.productService.add(data, this.cartService);
   }
 
 }

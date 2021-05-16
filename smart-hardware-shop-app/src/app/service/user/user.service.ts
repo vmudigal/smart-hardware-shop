@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { environment } from 'src/environments/environment';
 import { User } from '../../feature/+user/model/user.model';
 import { modules } from 'src/config/module';
+import { Constants } from 'src/app/shared/constants';
 
 /*
  * User service interacts with 
@@ -17,7 +18,7 @@ import { modules } from 'src/config/module';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /*
    * Get all users
@@ -33,7 +34,7 @@ export class UserService {
    */
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(environment.baseUrl + modules.users.detail
-      .replace('${user_id}', JSON.stringify(userId))).pipe(
+      .replace(Constants.USER_ROUTE_PARAM_USER_ID, JSON.stringify(userId))).pipe(
         map(user => new User(user))
       );
   }

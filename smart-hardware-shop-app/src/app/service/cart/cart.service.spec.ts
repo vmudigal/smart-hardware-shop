@@ -2,6 +2,9 @@ import { TestBed } from '@angular/core/testing';
 
 import { CartService } from './cart.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TestGlobalConstants } from 'src/app/app.component.spec';
 
 
 describe('CartService', () => {
@@ -9,7 +12,8 @@ describe('CartService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, MatSnackBarModule,
+        RouterTestingModule.withRoutes(TestGlobalConstants.appTestRoutes)],
       providers: [CartService]
     });
     service = TestBed.inject(CartService);
@@ -20,9 +24,17 @@ describe('CartService', () => {
   });
 
 
-  it('should return 404 for invalid user 999', async () => {
-    let response =  await service.getUserCart(999).toPromise();
-    console.log('response',response);
-    expect(response).toContain(404);
+  it('should return 404 for invalid user 9999', async () => {
+    try {
+      await service.getUserCart(9999).toPromise();
+    } catch (ex) {
+      console.log('response', ex);
+      expect(ex.status).toEqual(404);
+    }
+  })
+
+  it('should return 200 for valid user 1', async () => {
+    let response = await service.getUserCart(1).toPromise();
+    expect(response.id).toEqual(1);
   })
 });

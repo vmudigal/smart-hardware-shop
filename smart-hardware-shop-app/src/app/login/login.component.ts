@@ -23,14 +23,12 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService,
     private authService: AuthService,
     private router: Router) {
-    
+
   }
 
   ngOnInit() {
-    if(localStorage.getItem(Constants.LOGGED_IN_USER) != null) {
-      console.log('loggedInUser', localStorage.getItem(Constants.LOGGED_IN_USER));
-      // this.selectedUser = loggedInUser;
-      this.router.navigateByUrl("/");
+    if (localStorage.getItem(Constants.LOGGED_IN_USER) != null) {
+      this.router.navigate([Constants.ROUTE_HOME]);
     } else if (this.selectedUser == null) {
       this.userService.getAllUsers().subscribe((_users) => {
         this.users = _users;
@@ -40,7 +38,8 @@ export class LoginComponent implements OnInit {
             map(value => typeof value === 'string' ? value : value.firstName),
             map(firstName => firstName ? this._filter(firstName) : this.users.slice())
           );
-        console.log(_users);
+      }, err => {
+        this.router.navigate([Constants.NAVIGATE_ERROR, err.status], { queryParams: { code: err.status, message: err.statusText } });
       });
     }
   }
@@ -55,14 +54,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSelectUser(event: any) {
-    console.log('event.option.value', event.option.value);
     this.selectedUser = event.option.value;
   }
 
   login() {
     this.isLoggedIn = true;
     this.authService.setLoggedInUser(this.selectedUser);
-    this.router.navigate([''])
+    this.router.navigate([Constants.ROUTE_HOME])
   }
 
 }
