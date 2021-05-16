@@ -10,7 +10,7 @@ export const modules = {
     },
     users: {
         list: 'users',
-        detail: 'users/'
+        detail: `users/${Constants.USER_ROUTE_PARAM_USER_ID}`
     },
     cart: {
         list: 'carts',
